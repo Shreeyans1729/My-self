@@ -1,30 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sir Shreeyans Raj</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>π Protocol | Sir Shreeyans Raj</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f0f10;
-      --card: rgba(255, 255, 255, 0.06);
+      --bg: #0a0a0a;
+      --accent: #00fff7;
+      --pi: #ff0077;
       --text: #e2e2e2;
-      --accent: #6c5ce7;
-      --highlight: #00ffff;
+      --panel: rgba(255,255,255,0.05);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Share Tech Mono', monospace;
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
     }
     canvas {
       position: fixed;
-      z-index: -1;
       top: 0;
       left: 0;
+      z-index: -2;
     }
     header {
       height: 100vh;
@@ -33,192 +36,138 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 0 1rem;
+      padding: 2rem;
     }
-    header h1 {
-      font-size: 3rem;
-      font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(90deg, #00f0ff, #a84af0, #00f0ff);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      animation: shimmer 4s infinite linear;
-    }
-    header p {
-      margin-top: 1rem;
-      color: #aaa;
+    .boot {
       font-size: 1.2rem;
+      color: var(--accent);
+      animation: typing 4s steps(40, end), blink 1s step-end infinite alternate;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid var(--accent);
+      width: 100%;
+      max-width: 32ch;
     }
-    .container {
-      max-width: 960px;
-      margin: auto;
-      padding: 2rem 1rem;
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 32ch }
+    }
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+    h1 {
+      margin-top: 2rem;
+      font-size: 2.5rem;
+      color: var(--accent);
+      text-shadow: 0 0 10px var(--accent), 0 0 30px var(--accent);
+    }
+    .orbit {
+      position: absolute;
+      top: 20vh;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      animation: spin 20s linear infinite;
+    }
+    .orbit span {
+      position: absolute;
+      font-size: 1.5rem;
+      color: var(--pi);
+    }
+    .orbit span:nth-child(1) { top: 0; left: 50%; }
+    .orbit span:nth-child(2) { bottom: 0; left: 50%; }
+    .orbit span:nth-child(3) { top: 50%; left: 0; }
+    .orbit span:nth-child(4) { top: 50%; right: 0; }
+    @keyframes spin {
+      from { transform: translateX(-50%) rotate(0deg); }
+      to { transform: translateX(-50%) rotate(360deg); }
     }
     section {
+      max-width: 900px;
+      margin: auto;
       margin-bottom: 3rem;
       padding: 2rem;
-      background: var(--card);
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      background: var(--panel);
+      border-radius: 15px;
+      backdrop-filter: blur(6px);
+      transform: translateY(40px);
       opacity: 0;
-      transform: translateY(20px);
-      transition: 0.8s ease;
+      transition: all 0.7s ease;
     }
     section.reveal {
-      opacity: 1;
       transform: translateY(0);
+      opacity: 1;
     }
     h2 {
-      color: var(--highlight);
+      color: var(--accent);
       margin-bottom: 1rem;
     }
-    ul {
-      list-style: none;
-      padding-left: 1rem;
-    }
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    a:hover {
-      color: var(--highlight);
-      text-shadow: 0 0 10px var(--highlight);
-    }
-    .toggle {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: var(--card);
-      color: var(--text);
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: bold;
-      backdrop-filter: blur(10px);
-      z-index: 100;
-      box-shadow: 0 0 10px #000;
-    }
+    ul { padding-left: 1rem; }
+    a { color: var(--pi); }
+    a:hover { text-decoration: underline; }
     footer {
       text-align: center;
       padding: 2rem;
+      font-size: 0.9rem;
       color: #666;
-    }
-    @keyframes shimmer {
-      0% {background-position: -500px;}
-      100% {background-position: 500px;}
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
     }
   </style>
 </head>
 <body>
-
   <canvas id="bg"></canvas>
-
-  <button class="toggle" onclick="toggleTheme()">🌙 Toggle Theme</button>
-
   <header>
-    <h1>Sir Shreeyans Raj</h1>
-    <p>AI Dreamer • Web Developer • JEE Aspirant</p>
-  </header>
-
-  <div class="container">
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        I'm a determined student from Supaul, Bihar. Currently in Class 11 and studying PCM at Allen Kota while preparing for JEE. I've built multiple websites from my mobile and aim to become a software engineer working at Google or Microsoft. I dream of building an AI like JARVIS one day.
-      </p>
-    </section>
-
-    <section id="skills">
-      <h2>Skills</h2>
-      <ul>
-        <li>HTML, CSS, JavaScript</li>
-        <li>Frontend Design</li>
-        <li>Mobile-first UI</li>
-        <li>GitHub Hosting</li>
-      </ul>
-    </section>
-
-    <section id="projects">
-      <h2>Projects</h2>
-      <ul>
-        <li><strong>Manoj Medical:</strong> <a href="https://shreeyans7.github.io/Manoj____Medical" target="_blank">View</a></li>
-        <li><strong>School Website:</strong> <a href="https://shreeyans7.github.io/School" target="_blank">View</a></li>
-      </ul>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <ul>
-        <li>Email: <a href="mailto:shreeyansraj122@gmail.com">shreeyansraj122@gmail.com</a></li>
-        <li>GitHub: <a href="https://github.com/Shreeyans7" target="_blank">github.com/Shreeyans7</a></li>
-      </ul>
-    </section>
-  </div>
-
-  <footer>
-    &copy; 2025 Sir Shreeyans Raj — Crafted with Code & Passion 💻🔥
-  </footer>
-
-  <script>
-    // Scroll reveal
-    const sections = document.querySelectorAll("section");
-    function reveal() {
-      sections.forEach(section => {
-        const top = section.getBoundingClientRect().top;
-        if (top < window.innerHeight * 0.85) {
-          section.classList.add("reveal");
-        }
-      });
-    }
-    window.addEventListener("scroll", reveal);
-    window.addEventListener("load", reveal);
-
-    // Dark mode toggle
-    function toggleTheme() {
-      document.body.classList.toggle("dark");
-      if (document.body.classList.contains("dark")) {
-        document.documentElement.style.setProperty('--bg', '#fff');
-        document.documentElement.style.setProperty('--text', '#111');
-        document.documentElement.style.setProperty('--card', 'rgba(255, 255, 255, 0.5)');
-      } else {
-        document.documentElement.style.setProperty('--bg', '#0f0f10');
-        document.documentElement.style.setProperty('--text', '#e2e2e2');
-        document.documentElement.style.setProperty('--card', 'rgba(255, 255, 255, 0.06)');
-      }
-    }
-
-    // Particle background
+    <div class="boot">Initializing π Protocol...</div>
+    <h1>SIR SHREEYANS RAJ</h1>
+    <div class="orbit">
+      <span>π</span><span>&lt;/&gt;</span><span>∑</span><span>∫</span>
+    </div>
+  </header>  <section id="about">
+    <h2>About Me</h2>
+    <p>I am Shreeyans Raj — a JEE aspirant, coder, and future AI engineer. I build projects on my phone and dream of creating an AI like JARVIS, inspired by Elon Musk and Sundar Pichai.</p>
+  </section>  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML, CSS, JavaScript</li>
+      <li>Frontend Engineering</li>
+      <li>GitHub Hosting</li>
+    </ul>
+  </section>  <section id="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li><a href="https://shreeyans7.github.io/Manoj____Medical" target="_blank">Manoj Medical</a></li>
+      <li><a href="https://shreeyans7.github.io/School" target="_blank">School Website</a></li>
+    </ul>
+  </section>  <section id="contact">
+    <h2>Contact</h2>
+    <ul>
+      <li>Email: <a href="mailto:shreeyansraj122@gmail.com">shreeyansraj122@gmail.com</a></li>
+      <li>GitHub: <a href="https://github.com/Shreeyans7" target="_blank">github.com/Shreeyans7</a></li>
+    </ul>
+  </section>  <footer>&copy; 2025 π Protocol Engine by Sir Shreeyans Raj</footer>  <script>
     const canvas = document.getElementById('bg');
     const ctx = canvas.getContext('2d');
     let w = canvas.width = window.innerWidth;
     let h = canvas.height = window.innerHeight;
-    const dots = Array.from({length: 80}, () => ({
+    const symbols = Array.from({ length: 80 }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
-      r: Math.random() * 2 + 1,
       dx: Math.random() - 0.5,
-      dy: Math.random() - 0.5
+      dy: Math.random() - 0.5,
+      char: ['π', '∑', '√', '∫', '<>', '</>'][Math.floor(Math.random()*6)]
     }));
 
     function draw() {
       ctx.clearRect(0, 0, w, h);
-      ctx.fillStyle = 'rgba(0, 255, 255, 0.8)';
-      dots.forEach(dot => {
-        ctx.beginPath();
-        ctx.arc(dot.x, dot.y, dot.r, 0, Math.PI * 2);
-        ctx.fill();
-        dot.x += dot.dx;
-        dot.y += dot.dy;
-        if (dot.x < 0 || dot.x > w) dot.dx *= -1;
-        if (dot.y < 0 || dot.y > h) dot.dy *= -1;
+      ctx.fillStyle = 'rgba(0,255,255,0.6)';
+      ctx.font = '18px monospace';
+      symbols.forEach(s => {
+        ctx.fillText(s.char, s.x, s.y);
+        s.x += s.dx;
+        s.y += s.dy;
+        if (s.x < 0 || s.x > w) s.dx *= -1;
+        if (s.y < 0 || s.y > h) s.dy *= -1;
       });
       requestAnimationFrame(draw);
     }
@@ -227,7 +176,16 @@
       w = canvas.width = window.innerWidth;
       h = canvas.height = window.innerHeight;
     });
-  </script>
 
-</body>
+    // Section reveal
+    const sections = document.querySelectorAll('section');
+    window.addEventListener('scroll', () => {
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < window.innerHeight * 0.85) {
+          section.classList.add('reveal');
+        }
+      });
+    });
+  </script></body>
 </html>
