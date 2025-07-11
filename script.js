@@ -1,27 +1,23 @@
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-    });
-  });
-
-  // Reveal sections on scroll
-  const reveal = () => {
-    document.querySelectorAll('.fade-in').forEach(sec => {
-      if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
-        sec.classList.add('visible');
-      }
-    });
-  };
-  window.addEventListener('scroll', reveal);
-  reveal();
-
-  // Form handler
-  const form = document.getElementById('contact-form');
-  form.addEventListener('submit', e => {
+// Smooth scroll
+document.querySelectorAll('nav a').forEach(a =>
+  a.addEventListener('click', e => {
     e.preventDefault();
-    document.getElementById('status').textContent = 'Thanks—message sent!';
-    form.reset();
-  });
+    document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior:'smooth' });
+  })
+);
+
+// Typing effect
+const text = "A student, coder & AI dreamer";
+const el = document.querySelector('.typed');
+let idx=0;
+function type(){ if(idx<text.length){
+  el.textContent+=text[idx++]; setTimeout(type,60);
+}}
+type();
+
+// Form handler
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  alert('✅ Thank you, Shrey! Message received.');
+  e.target.reset();
 });
