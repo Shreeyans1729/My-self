@@ -8,24 +8,24 @@
   <style>
     :root {
       --bg: #0f0f10;
+      --card: rgba(255, 255, 255, 0.06);
       --text: #e2e2e2;
       --accent: #6c5ce7;
       --highlight: #00ffff;
     }
-
-    * {
+    body {
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg);
+      background: var(--bg);
       color: var(--text);
-      scroll-behavior: smooth;
+      overflow-x: hidden;
     }
-
+    canvas {
+      position: fixed;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
     header {
       height: 100vh;
       display: flex;
@@ -33,156 +33,200 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: linear-gradient(120deg, #1b1b2f, #0f0f10);
-      animation: fadeIn 1.5s ease-in-out forwards;
+      padding: 0 1rem;
     }
-
     header h1 {
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-family: 'Orbitron', sans-serif;
-      color: var(--highlight);
-      text-shadow: 0 0 10px var(--highlight), 0 0 30px var(--highlight);
+      background: linear-gradient(90deg, #00f0ff, #a84af0, #00f0ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: shimmer 4s infinite linear;
     }
-
     header p {
-      font-size: 1.2rem;
-      color: #aaa;
       margin-top: 1rem;
+      color: #aaa;
+      font-size: 1.2rem;
     }
-
-    section {
+    .container {
       max-width: 960px;
       margin: auto;
-      padding: 3rem 1rem;
+      padding: 2rem 1rem;
+    }
+    section {
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: var(--card);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       opacity: 0;
       transform: translateY(20px);
-      transition: all 0.7s ease;
+      transition: 0.8s ease;
     }
-
     section.reveal {
       opacity: 1;
       transform: translateY(0);
     }
-
     h2 {
-      color: var(--accent);
-      font-size: 1.8rem;
+      color: var(--highlight);
       margin-bottom: 1rem;
     }
-
     ul {
       list-style: none;
       padding-left: 1rem;
     }
-
     a {
-      color: var(--highlight);
+      color: var(--accent);
       text-decoration: none;
     }
-
     a:hover {
-      text-decoration: underline;
+      color: var(--highlight);
+      text-shadow: 0 0 10px var(--highlight);
     }
-
+    .toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--card);
+      color: var(--text);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      box-shadow: 0 0 10px #000;
+    }
     footer {
       text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
+      padding: 2rem;
       color: #666;
     }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .typing {
-      display: inline-block;
-      border-right: 2px solid var(--highlight);
-      white-space: nowrap;
-      overflow: hidden;
-      animation: typing 4s steps(30, end), blink 0.75s step-end infinite;
-      max-width: 100%;
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent }
+    @keyframes shimmer {
+      0% {background-position: -500px;}
+      100% {background-position: 500px;}
     }
 
     @media (max-width: 600px) {
       header h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
     }
   </style>
 </head>
 <body>
 
+  <canvas id="bg"></canvas>
+
+  <button class="toggle" onclick="toggleTheme()">🌙 Toggle Theme</button>
+
   <header>
-    <h1><span class="typing">Sir Shreeyans Raj</span></h1>
+    <h1>Sir Shreeyans Raj</h1>
     <p>AI Dreamer • Web Developer • JEE Aspirant</p>
   </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I’m a passionate student from Supaul, Bihar, currently preparing for JEE at Allen Kota with PCM. I build websites entirely from my mobile phone and have already published multiple frontend projects. Inspired by Sundar Pichai and my mama, my dream is to work at Google or Microsoft and build my own AI assistant like JARVIS.
-    </p>
-  </section>
+  <div class="container">
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I'm a determined student from Supaul, Bihar. Currently in Class 11 and studying PCM at Allen Kota while preparing for JEE. I've built multiple websites from my mobile and aim to become a software engineer working at Google or Microsoft. I dream of building an AI like JARVIS one day.
+      </p>
+    </section>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>HTML, CSS, JavaScript</li>
-      <li>Frontend Development</li>
-      <li>Mobile-first UI Design</li>
-      <li>GitHub Pages Deployment</li>
-    </ul>
-  </section>
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>HTML, CSS, JavaScript</li>
+        <li>Frontend Design</li>
+        <li>Mobile-first UI</li>
+        <li>GitHub Hosting</li>
+      </ul>
+    </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li><strong>Manoj Medical Project:</strong> <a href="https://shreeyans7.github.io/Manoj____Medical" target="_blank">View</a></li>
-      <li><strong>School Website:</strong> <a href="https://shreeyans7.github.io/School" target="_blank">View</a></li>
-    </ul>
-  </section>
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul>
+        <li><strong>Manoj Medical:</strong> <a href="https://shreeyans7.github.io/Manoj____Medical" target="_blank">View</a></li>
+        <li><strong>School Website:</strong> <a href="https://shreeyans7.github.io/School" target="_blank">View</a></li>
+      </ul>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <ul>
-      <li>Email: <a href="mailto:shreeyansraj122@gmail.com">shreeyansraj122@gmail.com</a></li>
-      <li>GitHub: <a href="https://github.com/Shreeyans7" target="_blank">github.com/Shreeyans7</a></li>
-    </ul>
-  </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <ul>
+        <li>Email: <a href="mailto:shreeyansraj122@gmail.com">shreeyansraj122@gmail.com</a></li>
+        <li>GitHub: <a href="https://github.com/Shreeyans7" target="_blank">github.com/Shreeyans7</a></li>
+      </ul>
+    </section>
+  </div>
 
-  <footer>&copy; 2025 Sir Shreeyans Raj. Built by me, for me. All rights reserved.</footer>
+  <footer>
+    &copy; 2025 Sir Shreeyans Raj — Crafted with Code & Passion 💻🔥
+  </footer>
 
   <script>
-    // Scroll reveal effect
+    // Scroll reveal
     const sections = document.querySelectorAll("section");
-    const reveal = () => {
+    function reveal() {
       sections.forEach(section => {
         const top = section.getBoundingClientRect().top;
-        const trigger = window.innerHeight * 0.85;
-        if (top < trigger) {
+        if (top < window.innerHeight * 0.85) {
           section.classList.add("reveal");
         }
       });
-    };
+    }
     window.addEventListener("scroll", reveal);
     window.addEventListener("load", reveal);
+
+    // Dark mode toggle
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+      if (document.body.classList.contains("dark")) {
+        document.documentElement.style.setProperty('--bg', '#fff');
+        document.documentElement.style.setProperty('--text', '#111');
+        document.documentElement.style.setProperty('--card', 'rgba(255, 255, 255, 0.5)');
+      } else {
+        document.documentElement.style.setProperty('--bg', '#0f0f10');
+        document.documentElement.style.setProperty('--text', '#e2e2e2');
+        document.documentElement.style.setProperty('--card', 'rgba(255, 255, 255, 0.06)');
+      }
+    }
+
+    // Particle background
+    const canvas = document.getElementById('bg');
+    const ctx = canvas.getContext('2d');
+    let w = canvas.width = window.innerWidth;
+    let h = canvas.height = window.innerHeight;
+    const dots = Array.from({length: 80}, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 2 + 1,
+      dx: Math.random() - 0.5,
+      dy: Math.random() - 0.5
+    }));
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = 'rgba(0, 255, 255, 0.8)';
+      dots.forEach(dot => {
+        ctx.beginPath();
+        ctx.arc(dot.x, dot.y, dot.r, 0, Math.PI * 2);
+        ctx.fill();
+        dot.x += dot.dx;
+        dot.y += dot.dy;
+        if (dot.x < 0 || dot.x > w) dot.dx *= -1;
+        if (dot.y < 0 || dot.y > h) dot.dy *= -1;
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+    window.addEventListener('resize', () => {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    });
   </script>
 
 </body>
