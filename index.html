@@ -3,56 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shreeyans Raj - Wikipedia Style Page</title>
+  <title>Sir Shreeyans Raj</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: sans-serif;
-      background: #ffffff;
-      color: #202122;
+    :root {
+      --bg: #f5f7fa;
+      --fg: #0f111a;
+      --accent: #4f46e5;
+      --card-bg: #ffffff;
+    }
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-    .container {
-      display: flex;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      padding: 2rem;
     }
-    .content {
-      flex: 3;
-      padding-right: 2rem;
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      animation: fadeIn 1s ease forwards;
     }
-    .sidebar {
-      flex: 1;
-      border: 1px solid #a2a9b1;
-      padding: 1rem;
-      background: #f8f9fa;
-      font-size: 0.9rem;
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
     }
-    h1 {
-      font-size: 2rem;
-      border-bottom: 1px solid #a2a9b1;
-      padding-bottom: 0.5rem;
-    }
-    h2 {
-      font-size: 1.3rem;
-      margin-top: 1.5rem;
-      border-bottom: 1px solid #c8ccd1;
-    }
-    ul {
+    header p {
+      font-size: 1.2rem;
+      color: #555;
       margin-top: 0.5rem;
     }
-    .toc {
-      border: 1px solid #a2a9b1;
-      background: #f9f9f9;
-      padding: 1rem;
-      margin: 1rem 0;
+    section {
+      max-width: 900px;
+      margin: auto;
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      animation: fadeInUp 0.8s ease forwards;
     }
-    .toc h3 {
-      margin-top: 0;
+    h2 {
+      font-size: 1.6rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    ul {
+      padding-left: 1rem;
     }
     a {
-      color: #0645ad;
+      color: var(--accent);
       text-decoration: none;
     }
     a:hover {
@@ -60,72 +65,86 @@
     }
     footer {
       text-align: center;
-      font-size: 0.8rem;
-      color: #888;
-      margin: 2rem auto;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      section {
+        padding: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="content">
-      <h1>Shreeyans Raj</h1>
-      <div class="toc">
-        <h3>Contents</h3>
-        <ul>
-          <li><a href="#early-life">Early Life</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#goals">Career Goals</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
+  <header>
+    <h1>Sir Shreeyans Raj</h1>
+    <p>AI Dreamer • Web Developer • JEE Aspirant</p>
+  </header>
 
-      <h2 id="early-life">Early Life</h2>
-      <p>Shreeyans Raj, born on 27 February 2008, hails from Jadia, Supaul, Bihar, India. From a young age, he was curious about technology and had a passion for solving problems logically.</p>
+  <section>
+    <h2>About Me</h2>
+    <p>
+      I'm a passionate student from Jadia, Supaul, Bihar — currently studying in Class 11 with a focus on Physics, Chemistry, and Mathematics. I'm preparing for the JEE at Allen Kota while building full web projects entirely from my mobile phone. Inspired by Sundar Pichai and my mama, I aim to become a top-tier software engineer and create my own AI assistant like JARVIS.
+    </p>
+  </section>
 
-      <h2 id="education">Education</h2>
-      <p>He studied at Bijendra Public School in Purnea and currently studies in Kota, where he is preparing for the JEE exam with PCM subjects at Allen Institute. His academic interests lie in Mathematics, Physics, and Computer Science.</p>
+  <section>
+    <h2>Projects</h2>
+    <ul>
+      <li>
+        <strong>Manoj Medical Project:</strong>
+        <a href="https://shreeyans7.github.io/Manoj____Medical" target="_blank">View Project</a>
+      </li>
+      <li>
+        <strong>School Project:</strong>
+        <a href="https://shreeyans7.github.io/School" target="_blank">View Project</a>
+      </li>
+    </ul>
+  </section>
 
-      <h2 id="projects">Projects</h2>
-      <ul>
-        <li><a href="https://shreeyans7.github.io/Manoj____Medical" target="_blank">Manoj Medical Project</a> – A medical store website built entirely from mobile.</li>
-        <li><a href="https://shreeyans7.github.io/School" target="_blank">School Project</a> – A school website project with frontend functionality.</li>
-      </ul>
+  <section>
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML, CSS, JavaScript</li>
+      <li>Mobile-first Web Development</li>
+      <li>Frontend UI Design</li>
+      <li>GitHub Hosting</li>
+    </ul>
+  </section>
 
-      <h2 id="skills">Skills</h2>
-      <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>Responsive Web Design</li>
-        <li>UI/UX (basic)</li>
-      </ul>
+  <section>
+    <h2>Contact</h2>
+    <ul>
+      <li>Email: <a href="mailto:shreeyansraj122@gmail.com">shreeyansraj122@gmail.com</a></li>
+      <li>GitHub: <a href="https://github.com/Shreeyans7" target="_blank">github.com/Shreeyans7</a></li>
+    </ul>
+  </section>
 
-      <h2 id="goals">Career Goals</h2>
-      <p>Shreeyans aspires to become a top-tier software engineer, build his own AI assistant (like JARVIS), and contribute to global tech companies like Google or Microsoft. His ultimate dream is to make technology more human, usable, and intelligent.</p>
-
-      <h2 id="contact">Contact</h2>
-      <ul>
-        <li>GitHub: <a href="https://github.com/Shreeyans7" target="_blank">Shreeyans7</a></li>
-        <li>Email: <a href="mailto:shreeyansraj122@gmail.com">shreeyansraj122@gmail.com</a></li>
-      </ul>
-    </div>
-
-    <div class="sidebar">
-      <h3>Shreeyans Raj</h3>
-      <p><strong>Born:</strong> 27 February 2008</p>
-      <p><strong>Hometown:</strong> Supaul, Bihar</p>
-      <p><strong>Nationality:</strong> Indian</p>
-      <p><strong>Education:</strong> Class 11 (PCM), Allen Kota</p>
-      <p><strong>Fields:</strong> Web Development, AI, JEE Prep</p>
-      <p><strong>Known for:</strong> Building websites using just a phone</p>
-    </div>
-  </div>
-
-  <footer>&copy; 2025 Shreeyans Raj. This is a personal webpage inspired by Wikipedia layout.</footer>
+  <footer>
+    &copy; 2025 Sir Shreeyans Raj. All rights reserved.
+  </footer>
 
 </body>
 </html>
