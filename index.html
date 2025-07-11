@@ -2,75 +2,85 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shrey's Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shreeyans Raj — Portfolio</title>
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
+
   <nav>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-container">
+      <h1 class="logo">Shrey</h1>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <header id="hero">
-    <div class="intro">
-      <img src="your-photo.jpg" alt="Shrey" class="profile-pic" />
-      <h1>Hi, I'm Shrey</h1>
-      <p>Student & Passionate Coder</p>
-      <a href="#projects" class="btn">My Work</a>
+  <header class="hero">
+    <div class="hero-content">
+      <img src="your-photo.jpg" alt="Shreeyans Raj" class="profile-pic"/>
+      <h2>Hello, I’m <span class="glow">Shreeyans Raj</span></h2>
+      <p>A student, a coder & an AI dreamer</p>
+      <a href="#projects" class="btn">See My Work</a>
     </div>
   </header>
 
-  <section id="about" class="fade-in">
-    <h2>About Me</h2>
-    <p>I’m a student with a love for coding and building attractive, responsive interfaces...</p>
-    <div class="skills">
-      <span>HTML</span><span>CSS</span><span>JavaScript</span><span>React</span>
+  <section id="about" class="glass-section">
+    <h2>👨‍💻 About Me</h2>
+    <p>
+      I'm <strong>Shrey</strong>, a student of Class 11 (PCM) in Kota, passionate about coding, artificial intelligence, and mathematics. Inspired by Sundar Pichai and my mama, my dream is to work at Google or Microsoft and build a personal AI like JARVIS.
+    </p>
+    <ul class="details">
+      <li><strong>📍 Location:</strong> Jadia, Supaul, Bihar</li>
+      <li><strong>🏫 Institute:</strong> Allen, Kota</li>
+      <li><strong>🎯 Goal:</strong> Crack JEE, become a software engineer</li>
+      <li><strong>🌟 Interests:</strong> AI, Frontend Dev, Physics, Drawing, Music</li>
+    </ul>
+  </section>
+
+  <section id="skills" class="glass-section">
+    <h2>⚙️ Skills</h2>
+    <div class="skill-tags">
+      <span>HTML</span><span>CSS</span><span>JavaScript</span>
+      <span>Python</span><span>GitHub</span><span>Responsive Design</span>
+      <span>Maths</span><span>Physics</span>
     </div>
   </section>
 
-  <section id="projects" class="fade-in">
-    <h2>Projects</h2>
-    <div class="card-grid">
-      <div class="card">
-        <h3>Project A</h3>
-        <p>Short description. Uses modern CSS and JS.</p>
-        <a href="#">View Code</a>
+  <section id="projects" class="glass-section">
+    <h2>💻 Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Manoj Medical</h3>
+        <p>A clean medical store site with responsive design and animations.</p>
+        <a href="https://shreeyans7.github.io/Manoj____Medical" target="_blank">Live Demo</a>
       </div>
-      <div class="card">
-        <h3>Project B</h3>
-        <p>Another project using animations and responsive design.</p>
-        <a href="#">View Code</a>
+      <div class="project-card">
+        <h3>School Project</h3>
+        <p>Beautiful layout with HTML/CSS/JS for my school website.</p>
+        <a href="https://shreeyans7.github.io/School" target="_blank">Live Demo</a>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="fade-in">
-    <h2>Contact Me</h2>
-    <form id="contact-form">
-      <div class="form-group">
-        <input type="text" id="name" required />
-        <label for="name">Name</label>
-      </div>
-      <div class="form-group">
-        <input type="email" id="email" required />
-        <label for="email">Email</label>
-      </div>
-      <div class="form-group">
-        <textarea id="message" required></textarea>
-        <label for="message">Message</label>
-      </div>
-      <button class="btn" type="submit">Send</button>
-      <p id="status"></p>
+  <section id="contact" class="glass-section">
+    <h2>📬 Contact Me</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
     </form>
   </section>
 
   <footer>
-    <p>&copy; 2025 Shrey</p>
+    <p>© 2025 Shreeyans Raj. Built with 💙 in HTML, CSS & JS.</p>
   </footer>
-  <script src="script.js"></script>
+
 </body>
 </html>
