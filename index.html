@@ -4,94 +4,125 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sir Shreeyans Raj</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f5f7fa;
-      --fg: #0f111a;
-      --accent: #4f46e5;
-      --card-bg: #ffffff;
+      --bg: #0f0f10;
+      --text: #e2e2e2;
+      --accent: #6c5ce7;
+      --highlight: #00ffff;
     }
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
-    body {
+
+    html, body {
       font-family: 'Inter', sans-serif;
       background-color: var(--bg);
-      color: var(--fg);
-      line-height: 1.6;
-      padding: 2rem;
+      color: var(--text);
+      scroll-behavior: smooth;
     }
+
     header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      margin-bottom: 3rem;
-      animation: fadeIn 1s ease forwards;
+      background: linear-gradient(120deg, #1b1b2f, #0f0f10);
+      animation: fadeIn 1.5s ease-in-out forwards;
     }
+
     header h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
+      font-size: 2.8rem;
+      font-family: 'Orbitron', sans-serif;
+      color: var(--highlight);
+      text-shadow: 0 0 10px var(--highlight), 0 0 30px var(--highlight);
     }
+
     header p {
       font-size: 1.2rem;
-      color: #555;
-      margin-top: 0.5rem;
+      color: #aaa;
+      margin-top: 1rem;
     }
+
     section {
-      max-width: 900px;
+      max-width: 960px;
       margin: auto;
-      margin-bottom: 3rem;
-      padding: 2rem;
-      background: var(--card-bg);
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-      animation: fadeInUp 0.8s ease forwards;
+      padding: 3rem 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.7s ease;
     }
+
+    section.reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     h2 {
-      font-size: 1.6rem;
       color: var(--accent);
+      font-size: 1.8rem;
       margin-bottom: 1rem;
     }
+
     ul {
+      list-style: none;
       padding-left: 1rem;
     }
+
     a {
-      color: var(--accent);
+      color: var(--highlight);
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
     }
+
     footer {
       text-align: center;
-      margin-top: 4rem;
+      padding: 2rem 1rem;
       font-size: 0.9rem;
-      color: #777;
+      color: #666;
     }
 
     @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-
-    @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: scale(0.95);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: scale(1);
       }
+    }
+
+    .typing {
+      display: inline-block;
+      border-right: 2px solid var(--highlight);
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(30, end), blink 0.75s step-end infinite;
+      max-width: 100%;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
     }
 
     @media (max-width: 600px) {
       header h1 {
         font-size: 2rem;
-      }
-      section {
-        padding: 1rem;
       }
     }
   </style>
@@ -99,42 +130,36 @@
 <body>
 
   <header>
-    <h1>Sir Shreeyans Raj</h1>
+    <h1><span class="typing">Sir Shreeyans Raj</span></h1>
     <p>AI Dreamer • Web Developer • JEE Aspirant</p>
   </header>
 
-  <section>
+  <section id="about">
     <h2>About Me</h2>
     <p>
-      I'm a passionate student from Jadia, Supaul, Bihar — currently studying in Class 11 with a focus on Physics, Chemistry, and Mathematics. I'm preparing for the JEE at Allen Kota while building full web projects entirely from my mobile phone. Inspired by Sundar Pichai and my mama, I aim to become a top-tier software engineer and create my own AI assistant like JARVIS.
+      I’m a passionate student from Supaul, Bihar, currently preparing for JEE at Allen Kota with PCM. I build websites entirely from my mobile phone and have already published multiple frontend projects. Inspired by Sundar Pichai and my mama, my dream is to work at Google or Microsoft and build my own AI assistant like JARVIS.
     </p>
   </section>
 
-  <section>
-    <h2>Projects</h2>
-    <ul>
-      <li>
-        <strong>Manoj Medical Project:</strong>
-        <a href="https://shreeyans7.github.io/Manoj____Medical" target="_blank">View Project</a>
-      </li>
-      <li>
-        <strong>School Project:</strong>
-        <a href="https://shreeyans7.github.io/School" target="_blank">View Project</a>
-      </li>
-    </ul>
-  </section>
-
-  <section>
+  <section id="skills">
     <h2>Skills</h2>
     <ul>
       <li>HTML, CSS, JavaScript</li>
-      <li>Mobile-first Web Development</li>
-      <li>Frontend UI Design</li>
-      <li>GitHub Hosting</li>
+      <li>Frontend Development</li>
+      <li>Mobile-first UI Design</li>
+      <li>GitHub Pages Deployment</li>
     </ul>
   </section>
 
-  <section>
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li><strong>Manoj Medical Project:</strong> <a href="https://shreeyans7.github.io/Manoj____Medical" target="_blank">View</a></li>
+      <li><strong>School Website:</strong> <a href="https://shreeyans7.github.io/School" target="_blank">View</a></li>
+    </ul>
+  </section>
+
+  <section id="contact">
     <h2>Contact</h2>
     <ul>
       <li>Email: <a href="mailto:shreeyansraj122@gmail.com">shreeyansraj122@gmail.com</a></li>
@@ -142,9 +167,23 @@
     </ul>
   </section>
 
-  <footer>
-    &copy; 2025 Sir Shreeyans Raj. All rights reserved.
-  </footer>
+  <footer>&copy; 2025 Sir Shreeyans Raj. Built by me, for me. All rights reserved.</footer>
+
+  <script>
+    // Scroll reveal effect
+    const sections = document.querySelectorAll("section");
+    const reveal = () => {
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        const trigger = window.innerHeight * 0.85;
+        if (top < trigger) {
+          section.classList.add("reveal");
+        }
+      });
+    };
+    window.addEventListener("scroll", reveal);
+    window.addEventListener("load", reveal);
+  </script>
 
 </body>
 </html>
