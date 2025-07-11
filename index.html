@@ -1,199 +1,76 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>π Protocol | Sir Shreeyans Raj</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0a0a0a;
-      --accent: #00fff7;
-      --pi: #ff0077;
-      --text: #e2e2e2;
-      --panel: rgba(255,255,255,0.05);
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Share Tech Mono', monospace;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -2;
-    }
-    header {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
-    }
-    .boot {
-      font-size: 1.2rem;
-      color: var(--accent);
-      animation: typing 4s steps(40, end), blink 1s step-end infinite alternate;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid var(--accent);
-      width: 100%;
-      max-width: 32ch;
-    }
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 32ch }
-    }
-    @keyframes blink {
-      50% { border-color: transparent }
-    }
-    h1 {
-      margin-top: 2rem;
-      font-size: 2.5rem;
-      color: var(--accent);
-      text-shadow: 0 0 10px var(--accent), 0 0 30px var(--accent);
-      animation: zoomIn 2s ease-out;
-    }
-    @keyframes zoomIn {
-      from { transform: scale(0.6); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    .orbit {
-      position: absolute;
-      top: 20vh;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      animation: spin 20s linear infinite;
-    }
-    .orbit span {
-      position: absolute;
-      font-size: 1.5rem;
-      color: var(--pi);
-    }
-    .orbit span:nth-child(1) { top: 0; left: 50%; }
-    .orbit span:nth-child(2) { bottom: 0; left: 50%; }
-    .orbit span:nth-child(3) { top: 50%; left: 0; }
-    .orbit span:nth-child(4) { top: 50%; right: 0; }
-    @keyframes spin {
-      from { transform: translateX(-50%) rotate(0deg); }
-      to { transform: translateX(-50%) rotate(360deg); }
-    }
-    nav {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      display: flex;
-      gap: 1rem;
-      z-index: 10;
-    }
-    nav button {
-      background: var(--panel);
-      color: var(--text);
-      border: 1px solid var(--accent);
-      border-radius: 10px;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-    nav button:hover {
-      background: var(--accent);
-      color: #000;
-    }
-    section {
-      max-width: 900px;
-      margin: auto;
-      margin-bottom: 3rem;
-      padding: 2rem;
-      background: var(--panel);
-      border-radius: 15px;
-      backdrop-filter: blur(6px);
-      transform: translateY(40px);
-      opacity: 0;
-      transition: all 0.7s ease;
-    }
-    section.reveal {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    h2 {
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-    ul { padding-left: 1rem; }
-    a { color: var(--pi); }
-    a:hover { text-decoration: underline; }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #666;
-    }
-    audio { display: none; }
-  </style>
+  <title>Shrey's Profile</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body onload="playIntro()">
-  <audio id="introSound" src="https://cdn.pixabay.com/download/audio/2023/03/02/audio_4a3d6e631b.mp3?filename=digital-intro-140351.mp3"></audio>
-  <canvas id="bg"></canvas>
+<body>
   <nav>
-    <button onclick="window.location.href='about.html'">About</button>
-    <button onclick="window.location.href='skills.html'">Skills</button>
-    <button onclick="window.location.href='projects.html'">Projects</button>
-    <button onclick="window.location.href='contact.html'">Contact</button>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </nav>
-  <header>
-    <div class="boot">Initializing π Protocol...</div>
-    <h1>SIR SHREEYANS RAJ</h1>
-    <div class="orbit">
-      <span>π</span><span>&lt;/&gt;</span><span>∑</span><span>∫</span>
+
+  <header id="hero">
+    <div class="intro">
+      <img src="your-photo.jpg" alt="Shrey" class="profile-pic" />
+      <h1>Hi, I'm Shrey</h1>
+      <p>Student & Passionate Coder</p>
+      <a href="#projects" class="btn">My Work</a>
     </div>
-  </header>  <footer>&copy; 2025 π Protocol Engine by Sir Shreeyans Raj</footer>  <script>
-    const canvas = document.getElementById('bg');
-    const ctx = canvas.getContext('2d');
-    let w = canvas.width = window.innerWidth;
-    let h = canvas.height = window.innerHeight;
-    const symbols = Array.from({ length: 80 }, () => ({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      dx: Math.random() - 0.5,
-      dy: Math.random() - 0.5,
-      char: ['π', '∑', '√', '∫', '<>', '</>'][Math.floor(Math.random()*6)]
-    }));
+  </header>
 
-    function draw() {
-      ctx.clearRect(0, 0, w, h);
-      ctx.fillStyle = 'rgba(0,255,255,0.6)';
-      ctx.font = '18px monospace';
-      symbols.forEach(s => {
-        ctx.fillText(s.char, s.x, s.y);
-        s.x += s.dx;
-        s.y += s.dy;
-        if (s.x < 0 || s.x > w) s.dx *= -1;
-        if (s.y < 0 || s.y > h) s.dy *= -1;
-      });
-      requestAnimationFrame(draw);
-    }
-    draw();
-    window.addEventListener('resize', () => {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    });
+  <section id="about" class="fade-in">
+    <h2>About Me</h2>
+    <p>I’m a student with a love for coding and building attractive, responsive interfaces...</p>
+    <div class="skills">
+      <span>HTML</span><span>CSS</span><span>JavaScript</span><span>React</span>
+    </div>
+  </section>
 
-    function playIntro() {
-      const sound = document.getElementById('introSound');
-      sound.volume = 0.5;
-      sound.play();
-    }
-  </script></body>
+  <section id="projects" class="fade-in">
+    <h2>Projects</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Project A</h3>
+        <p>Short description. Uses modern CSS and JS.</p>
+        <a href="#">View Code</a>
+      </div>
+      <div class="card">
+        <h3>Project B</h3>
+        <p>Another project using animations and responsive design.</p>
+        <a href="#">View Code</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="fade-in">
+    <h2>Contact Me</h2>
+    <form id="contact-form">
+      <div class="form-group">
+        <input type="text" id="name" required />
+        <label for="name">Name</label>
+      </div>
+      <div class="form-group">
+        <input type="email" id="email" required />
+        <label for="email">Email</label>
+      </div>
+      <div class="form-group">
+        <textarea id="message" required></textarea>
+        <label for="message">Message</label>
+      </div>
+      <button class="btn" type="submit">Send</button>
+      <p id="status"></p>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Shrey</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
 </html>
